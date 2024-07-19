@@ -11,7 +11,7 @@ class TestShipmentUpdate {
     fun TestCreateShipment()
     {
         val create = Create()
-        val arguments: MutableList<String> = mutableListOf("created", "newShipment", "12345678")
+        val arguments: MutableList<String> = mutableListOf("created", "newShipment","standard", "12345678")
 
         create.performUpdate(arguments)
 
@@ -27,7 +27,8 @@ class TestShipmentUpdate {
     @Test
     fun TestShippedShipment()
     {
-        val shipment = Shipment("98", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
+
+        val shipment = StandardShipment("98", "created", mutableListOf(),  mutableListOf(), -1, "unknown", 12345678)
 
         TrackingServer.addShipment(shipment)
         val shipped = Shipped()
@@ -47,7 +48,7 @@ class TestShipmentUpdate {
     @Test
     fun TestLostShipment()
     {
-        val shipment = Shipment("99", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
+        val shipment = StandardShipment("99", "created", mutableListOf(),  mutableListOf(), -1, "unknown", 12345678)
 
         TrackingServer.addShipment(shipment)
         val lost = Lost()
@@ -67,7 +68,7 @@ class TestShipmentUpdate {
     @Test
     fun TestLocationShipment()
     {
-        val shipment = Shipment("100", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
+        val shipment = StandardShipment("100", "created", mutableListOf(),  mutableListOf(), -1, "unknown", 12345678)
 
         TrackingServer.addShipment(shipment)
         val location = Location()
@@ -88,7 +89,7 @@ class TestShipmentUpdate {
     @Test
     fun TestAddingNote()
     {
-        val shipment = Shipment("101", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
+        val shipment = StandardShipment("101", "created", mutableListOf(),  mutableListOf(), -1, "unknown", 12345678)
 
         TrackingServer.addShipment(shipment)
         val note = NoteAdded()
@@ -108,7 +109,7 @@ class TestShipmentUpdate {
     @Test
     fun TestDeliveringShipment()
     {
-        val shipment = Shipment("102", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
+        val shipment = StandardShipment("102", "created", mutableListOf(),  mutableListOf(), -1, "unknown", 12345678)
 
         TrackingServer.addShipment(shipment)
         val delivery = Delivered()
@@ -128,7 +129,7 @@ class TestShipmentUpdate {
     @Test
     fun TestCancelingShipment()
     {
-        val shipment = Shipment("103", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
+        val shipment = StandardShipment("103", "created", mutableListOf(),  mutableListOf(), -1, "unknown", 12345678)
 
         TrackingServer.addShipment(shipment)
         val cancel = Canceled()
@@ -148,7 +149,7 @@ class TestShipmentUpdate {
     @Test
     fun TestDelayingShipment()
     {
-        val shipment = Shipment("104", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
+        val shipment = StandardShipment("104", "created", mutableListOf(),  mutableListOf(), -1, "unknown", 12345678)
 
         TrackingServer.addShipment(shipment)
         val delay = Delayed()
@@ -170,7 +171,7 @@ class TestShipmentUpdate {
     @Test
     fun TestFailingLongCheck()
     {
-        val shipment = Shipment("1234", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
+        val shipment = StandardShipment("1234", "created", mutableListOf(),  mutableListOf(), -1, "unknown", 12345678)
         val arguments: MutableList<String> = mutableListOf("NA", "1234")
         val create = Create()
         val delivered = Delivered()
@@ -211,7 +212,7 @@ class TestShipmentUpdate {
     fun TestIncorrectNumberOfArguments()
     {
 
-        val shipment = Shipment("1234", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
+        val shipment = StandardShipment("1234", "created", mutableListOf(),  mutableListOf(), -1, "unknown", 12345678)
         val arguments: MutableList<String> = mutableListOf("NA", "1234")
 
         TrackingServer.addShipment(shipment)
@@ -246,7 +247,7 @@ class TestShipmentUpdate {
     @Test
     fun TestShipmentExistingOrNot()
     {
-        val shipment = Shipment("1234", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
+        val shipment = StandardShipment("1234", "created", mutableListOf(),  mutableListOf(), -1, "unknown", 12345678)
 
         TrackingServer.addShipment(shipment)
         val create = Create()

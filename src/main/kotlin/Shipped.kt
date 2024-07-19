@@ -12,10 +12,15 @@ class Shipped: Update {
         {
             if (arguments[2].toLongOrNull() != null && arguments[3].toLongOrNull() != null) {
 
-                val shippingUpdate = ShippingUpdate(shipment.getStatus(), "shipped", arguments[2].toLong())
-                shipment.setStatus("shipped")
-                shipment.setExpectedDeliveryDateTimeStamp(arguments[3].toLong())
-                shipment.addUpdate(shippingUpdate)
+                if (shipment.getStatus() == "created") {
+                    val shippingUpdate = ShippingUpdate(shipment.getStatus(), "shipped", arguments[2].toLong())
+                    shipment.setStatus("shipped")
+                    shipment.setExpectedDeliveryDateTimeStamp(arguments[3].toLong())
+                    shipment.addUpdate(shippingUpdate)
+                }
+                else{
+                    throw IllegalArgumentException("Tried shipping an already shipped shipment!")
+                }
             }
             else
             {

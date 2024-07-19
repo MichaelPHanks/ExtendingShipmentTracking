@@ -58,6 +58,10 @@ object TrackingServer
                     try {
                         val temp = data.split(",")
                         updates[temp[0]]?.performUpdate(temp)
+                        for (item in shipments)
+                        {
+                            println(item.getId())
+                        }
                     }
                     catch (e: Exception)
                     {

@@ -11,7 +11,7 @@ class TestTrackerSubscription {
     @Test
     fun TestTrackerViewHelperUpdated()
     {
-        val shipment = Shipment("1234678", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
+        val shipment = StandardShipment("1234678", "created", mutableListOf(),  mutableListOf(), -1, "unknown", 12345678)
         val tracker = TrackerViewHelper()
         TrackingServer.addShipment(shipment)
         tracker.trackShipment("1234678")
@@ -30,7 +30,7 @@ class TestTrackerSubscription {
     @Test
     fun TestUnsubscribingFromShipment()
     {
-        val shipment = Shipment("12", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
+        val shipment = StandardShipment("12", "created", mutableListOf(),  mutableListOf(), -1, "unknown", 12345678)
         val tracker = TrackerViewHelper()
         TrackingServer.addShipment(shipment)
         tracker.trackShipment("12")
@@ -52,7 +52,7 @@ class TestTrackerSubscription {
     @Test
     fun TestUpdatingFilledShipment()
     {
-        val shipment = Shipment("123", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
+        val shipment = StandardShipment("123", "created", mutableListOf(),  mutableListOf(), -1, "unknown", 12345678)
         val tracker = TrackerViewHelper()
         TrackingServer.addShipment(shipment)
         tracker.trackShipment("123")

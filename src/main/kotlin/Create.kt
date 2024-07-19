@@ -3,7 +3,7 @@ import javax.print.attribute.standard.MediaSize.NA
 class Create: Update {
     override fun performUpdate(arguments: List<String>) {
 
-        if (arguments.size != 3)
+        if (arguments.size != 4)
         {
             throw IllegalArgumentException("Not enough arguments for creating shipment...")
 
@@ -12,18 +12,12 @@ class Create: Update {
 
         if (shipment == null)
         {
-            if (arguments[2].toLongOrNull() != null) {
+            if (arguments[3].toLongOrNull() != null) {
 
-                TrackingServer.addShipment(
-                    Shipment(
-                        arguments[1],
-                        "created",
-                        mutableListOf(),
-                        mutableListOf(),
-                        -1,
-                        "unknown"
-                    )
-                )
+                val shipment1: Shipment = createShipment(arguments)
+
+                TrackingServer.addShipment(shipment1)
+
             }
             else
             {

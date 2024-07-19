@@ -1,10 +1,11 @@
-class Shipment(
+abstract class Shipment(
     private var id: String,
     private var status: String,
     private var notes: MutableList<String>,
     private var updateHistory: MutableList<ShippingUpdate>,
     private var expectedDeliveryDateTimeStamp: Long,
-    private var currentLocation: String
+    private var currentLocation: String,
+    private var creationTime: Long
 ) : Subject {
     private var observers: MutableList<Observer> = mutableListOf()
 
@@ -31,7 +32,8 @@ class Shipment(
         notifyObservers(this)
     }
 
-    fun addUpdate(update: ShippingUpdate) {
+    open fun addUpdate(update: ShippingUpdate)
+    {
         this.updateHistory.add(update)
         notifyObservers(this)
     }
@@ -72,5 +74,10 @@ class Shipment(
         this.currentLocation = currentLocation
         notifyObservers(this)
 
+    }
+
+    fun getCreationTime(): Long
+    {
+        return this.creationTime
     }
 }
