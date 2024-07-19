@@ -7,7 +7,7 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import java.io.File
 
-fun main()
+suspend fun server()
 {
 
     embeddedServer(Netty, 8080)
@@ -33,19 +33,7 @@ fun main()
                 call.respondText{"Okay!"}
             }
 
-            get ("/shipment/{id}")
-            {
-                val id = call.parameters["id"]
-                if (id != null)
-                {
-                    val shipment = TrackingSimulator.findShipment(id)
-                    println("Shipment found! -- $shipment")
-                }
-                //call.respondText(File("src/main/index.html").readText(), ContentType.Text.Html)
-                call.respond("Got it!")
-            }
-
 
         }
-    }.start(wait = true)
+    }.start(wait = false)
 }

@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.util.Date
 
@@ -121,7 +122,9 @@ fun DeletableCard(trackerViewHelper: TrackerViewHelper, onDelete: () -> Unit) {
 }
 
 fun main() = runBlocking {
-   // async {server()}
+    launch {
+        server()
+    }
     print("Starting UI...")
     application {
         Window(onCloseRequest = ::exitApplication) {

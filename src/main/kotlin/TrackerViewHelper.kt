@@ -36,14 +36,14 @@ class TrackerViewHelper : Observer {
     // Finds existing shipment and attempts to track it.
     fun trackShipment(id: String)
     {
-//        val shipment: Shipment? = TrackingSimulator.findShipment(id)
-//        this.shipmentId = id
-//        if (shipment != null)
-//        {
-//            shipment.addSubscription(this)
-//            this.setCard(shipment)
-//            shipmentExists = true
-//        }
+        val shipment: Shipment? = TrackingSimulator.findShipment(id)
+        this.shipmentId = id
+        if (shipment != null)
+        {
+            shipment.addSubscription(this)
+            this.setCard(shipment)
+            shipmentExists = true
+        }
 
 
         val client  = HttpClient.newHttpClient()
