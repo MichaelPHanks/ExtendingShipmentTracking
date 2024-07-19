@@ -15,7 +15,7 @@ class TestShipmentUpdate {
 
         create.performUpdate(arguments)
 
-        val shipment: Shipment? = TrackingSimulator.findShipment("newShipment")
+        val shipment: Shipment? = TrackingServer.findShipment("newShipment")
 
         assertNotNull(shipment)
         assertEquals("created", shipment.getStatus())
@@ -29,13 +29,13 @@ class TestShipmentUpdate {
     {
         val shipment = Shipment("98", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
 
-        TrackingSimulator.addShipment(shipment)
+        TrackingServer.addShipment(shipment)
         val shipped = Shipped()
         val arguments: MutableList<String> = mutableListOf("shipped", "98", "12345678", "12345678")
 
         shipped.performUpdate(arguments)
 
-        val shipment1: Shipment? = TrackingSimulator.findShipment("98")
+        val shipment1: Shipment? = TrackingServer.findShipment("98")
 
         assertNotNull(shipment1)
         assertEquals("shipped", shipment1.getStatus())
@@ -49,13 +49,13 @@ class TestShipmentUpdate {
     {
         val shipment = Shipment("99", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
 
-        TrackingSimulator.addShipment(shipment)
+        TrackingServer.addShipment(shipment)
         val lost = Lost()
         val arguments: MutableList<String> = mutableListOf("lost", "99", "12345678")
 
         lost.performUpdate(arguments)
 
-        val shipment1: Shipment? = TrackingSimulator.findShipment("99")
+        val shipment1: Shipment? = TrackingServer.findShipment("99")
 
         assertNotNull(shipment1)
         assertEquals("lost", shipment1.getStatus())
@@ -69,13 +69,13 @@ class TestShipmentUpdate {
     {
         val shipment = Shipment("100", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
 
-        TrackingSimulator.addShipment(shipment)
+        TrackingServer.addShipment(shipment)
         val location = Location()
         val arguments: MutableList<String> = mutableListOf("location", "100", "12345678", "Salt Lake City, UT")
 
         location.performUpdate(arguments)
 
-        val shipment1: Shipment? = TrackingSimulator.findShipment("100")
+        val shipment1: Shipment? = TrackingServer.findShipment("100")
 
         assertNotNull(shipment1)
         assertEquals("created", shipment1.getStatus())
@@ -90,13 +90,13 @@ class TestShipmentUpdate {
     {
         val shipment = Shipment("101", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
 
-        TrackingSimulator.addShipment(shipment)
+        TrackingServer.addShipment(shipment)
         val note = NoteAdded()
         val arguments: MutableList<String> = mutableListOf("location", "101", "12345678", "something happened to the package!!!")
 
         note.performUpdate(arguments)
 
-        val shipment1: Shipment? = TrackingSimulator.findShipment("101")
+        val shipment1: Shipment? = TrackingServer.findShipment("101")
 
         assertNotNull(shipment1)
         assertEquals("created", shipment1.getStatus())
@@ -110,13 +110,13 @@ class TestShipmentUpdate {
     {
         val shipment = Shipment("102", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
 
-        TrackingSimulator.addShipment(shipment)
+        TrackingServer.addShipment(shipment)
         val delivery = Delivered()
         val arguments: MutableList<String> = mutableListOf("delivered", "102", "12345678")
 
         delivery.performUpdate(arguments)
 
-        val shipment1: Shipment? = TrackingSimulator.findShipment("102")
+        val shipment1: Shipment? = TrackingServer.findShipment("102")
 
         assertNotNull(shipment1)
         assertEquals("delivered", shipment1.getStatus())
@@ -130,13 +130,13 @@ class TestShipmentUpdate {
     {
         val shipment = Shipment("103", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
 
-        TrackingSimulator.addShipment(shipment)
+        TrackingServer.addShipment(shipment)
         val cancel = Canceled()
         val arguments: MutableList<String> = mutableListOf("canceled", "103", "12345678")
 
         cancel.performUpdate(arguments)
 
-        val shipment1: Shipment? = TrackingSimulator.findShipment("103")
+        val shipment1: Shipment? = TrackingServer.findShipment("103")
 
         assertNotNull(shipment1)
         assertEquals("canceled", shipment1.getStatus())
@@ -150,13 +150,13 @@ class TestShipmentUpdate {
     {
         val shipment = Shipment("104", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
 
-        TrackingSimulator.addShipment(shipment)
+        TrackingServer.addShipment(shipment)
         val delay = Delayed()
         val arguments: MutableList<String> = mutableListOf("delayed", "104", "12345678", "12345679")
 
         delay.performUpdate(arguments)
 
-        val shipment1: Shipment? = TrackingSimulator.findShipment("104")
+        val shipment1: Shipment? = TrackingServer.findShipment("104")
 
         assertNotNull(shipment1)
         assertEquals("delayed", shipment1.getStatus())
@@ -180,7 +180,7 @@ class TestShipmentUpdate {
         val canceled = Canceled()
         val noteAdded = NoteAdded()
         val shipped = Shipped()
-        TrackingSimulator.addShipment(shipment)
+        TrackingServer.addShipment(shipment)
         arguments.add("hello!")
 
         assertFailsWith<IllegalArgumentException> {delivered.performUpdate(arguments.toList())}
@@ -214,7 +214,7 @@ class TestShipmentUpdate {
         val shipment = Shipment("1234", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
         val arguments: MutableList<String> = mutableListOf("NA", "1234")
 
-        TrackingSimulator.addShipment(shipment)
+        TrackingServer.addShipment(shipment)
         val create = Create()
         val delivered = Delivered()
         val lost = Lost()
@@ -248,7 +248,7 @@ class TestShipmentUpdate {
     {
         val shipment = Shipment("1234", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
 
-        TrackingSimulator.addShipment(shipment)
+        TrackingServer.addShipment(shipment)
         val create = Create()
         val delivered = Delivered()
         val lost = Lost()

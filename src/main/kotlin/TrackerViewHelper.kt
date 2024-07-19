@@ -29,14 +29,14 @@ class TrackerViewHelper : Observer {
 
     // Finds the existing shipment and removes itself from the subscriptions
     fun stopTracking() {
-        TrackingSimulator.findShipment(shipmentId)?.removeSubscription(this)
+        TrackingServer.findShipment(shipmentId)?.removeSubscription(this)
     }
 
 
     // Finds existing shipment and attempts to track it.
     fun trackShipment(id: String)
     {
-        val shipment: Shipment? = TrackingSimulator.findShipment(id)
+        val shipment: Shipment? = TrackingServer.findShipment(id)
         this.shipmentId = id
         if (shipment != null)
         {
@@ -44,18 +44,6 @@ class TrackerViewHelper : Observer {
             this.setCard(shipment)
             shipmentExists = true
         }
-
-
-        val client  = HttpClient.newHttpClient()
-        val request = HttpRequest.newBuilder()
-            .uri(URI.create("http://localhost:8080/shipment/${id}"))
-            .GET()
-            .build()
-
-        val response = client.send(request, HttpResponse.BodyHandlers.ofString())
-
-        print(response.body())
-
     }
 
     // This takes in the 'new' value of the card and sets everything

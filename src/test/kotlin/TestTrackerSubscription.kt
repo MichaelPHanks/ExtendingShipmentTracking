@@ -13,7 +13,7 @@ class TestTrackerSubscription {
     {
         val shipment = Shipment("1234678", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
         val tracker = TrackerViewHelper()
-        TrackingSimulator.addShipment(shipment)
+        TrackingServer.addShipment(shipment)
         tracker.trackShipment("1234678")
         assertTrue(tracker.shipmentExists)
         assertEquals("created", tracker.shipmentStatus)
@@ -32,7 +32,7 @@ class TestTrackerSubscription {
     {
         val shipment = Shipment("12", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
         val tracker = TrackerViewHelper()
-        TrackingSimulator.addShipment(shipment)
+        TrackingServer.addShipment(shipment)
         tracker.trackShipment("12")
         assertEquals("created", tracker.shipmentStatus)
         shipment.setStatus("shipped")
@@ -54,7 +54,7 @@ class TestTrackerSubscription {
     {
         val shipment = Shipment("123", "created", mutableListOf(),  mutableListOf(), -1, "unknown")
         val tracker = TrackerViewHelper()
-        TrackingSimulator.addShipment(shipment)
+        TrackingServer.addShipment(shipment)
         tracker.trackShipment("123")
 
         shipment.setStatus("delayed")

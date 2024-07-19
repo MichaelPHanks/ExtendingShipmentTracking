@@ -123,7 +123,7 @@ fun DeletableCard(trackerViewHelper: TrackerViewHelper, onDelete: () -> Unit) {
 
 fun main() = runBlocking {
     launch {
-        server()
+        TrackingServer.server()
     }
     print("Starting UI...")
     application {

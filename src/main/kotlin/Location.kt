@@ -5,7 +5,7 @@ class Location: Update {
             throw IllegalArgumentException("Not enough arguments for creating shipment...")
 
         }
-        val shipment: Shipment? = TrackingSimulator.findShipment(arguments[1])
+        val shipment: Shipment? = TrackingServer.findShipment(arguments[1])
 
         if (shipment != null)
         {

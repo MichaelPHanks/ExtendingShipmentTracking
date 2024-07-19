@@ -5,7 +5,7 @@ class Lost: Update {
             throw IllegalArgumentException("Incorrect number of arguments...")
         }
 
-        val shipment: Shipment? = TrackingSimulator.findShipment(arguments[1])
+        val shipment: Shipment? = TrackingServer.findShipment(arguments[1])
 
         if (shipment != null)
         {
