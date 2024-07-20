@@ -14,9 +14,9 @@ class OvernightShipment(id: String,
         if (Date(this.getExpectedDeliveryDateTimeStamp()) > Date(this.getCreationTime() + (1000 * 60 * 60 * 24)) && this.getStatus() != "delayed")
         {
             // Add a note!
-            if (!this.getNotes().contains("Shipment is expected to arrive later than the expected less than one day, sorry!"))
+            if (!this.getNotes().contains("Shipment is expected to arrive later than the expected less than one day for an overnight shipment, sorry!"))
             {
-                this.addNote("Shipment is expected to arrive later than the expected less than one day, sorry!")
+                this.addNote("Shipment is expected to arrive later than the expected less than one day for an overnight shipment, sorry!")
             }
         }
         notifyObservers(this)

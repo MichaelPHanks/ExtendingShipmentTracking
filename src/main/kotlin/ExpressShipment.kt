@@ -14,9 +14,9 @@ class ExpressShipment(id: String,
         if (Date(this.getExpectedDeliveryDateTimeStamp()) > Date(this.getCreationTime() + (1000 * 60 * 60 * 24 * 3)) && this.getStatus() != "delayed")
         {
             // Add a note!
-            if (!this.getNotes().contains("Shipment is expected to arrive later than the expected less than three days, sorry!"))
+            if (!this.getNotes().contains("Shipment is expected to arrive later than the expected less than three days for an express shipment, sorry!"))
             {
-                this.addNote("Shipment is expected to arrive later than the expected less than three days, sorry!")
+                this.addNote("Shipment is expected to arrive later than the expected less than three days for an express shipment, sorry!")
             }
         }
         notifyObservers(this)

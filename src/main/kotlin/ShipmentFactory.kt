@@ -1,6 +1,6 @@
 fun createShipment(arguments: List<String>) : Shipment
 {
-    if (arguments.size >= 3)
+    if (arguments.size == 4)
     {
         if (arguments[2] == "bulk")
         {

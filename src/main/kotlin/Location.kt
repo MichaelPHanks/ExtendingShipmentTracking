@@ -2,7 +2,7 @@ class Location: Update {
     override fun performUpdate(arguments: List<String>) {
         if (arguments.size != 4)
         {
-            throw IllegalArgumentException("Not enough arguments for creating shipment...")
+            throw IllegalArgumentException("Not enough arguments for setting location for shipment")
 
         }
         val shipment: Shipment? = TrackingServer.findShipment(arguments[1])

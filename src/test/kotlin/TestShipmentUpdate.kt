@@ -44,6 +44,9 @@ class TestShipmentUpdate {
         assertEquals(12345678, shipment1.getExpectedDeliveryDateTimeStamp())
         assertEquals(0, shipment1.getNotes().size)
 
+        // Testing to make sure we cannot ship it again!
+        assertFailsWith<IllegalArgumentException> { shipped.performUpdate(arguments) }
+
     }
     @Test
     fun TestLostShipment()
@@ -194,6 +197,7 @@ class TestShipmentUpdate {
         assertFailsWith<IllegalArgumentException> {canceled.performUpdate(arguments.toList())}
         assertFailsWith<IllegalArgumentException> {noteAdded.performUpdate(arguments.toList())}
         assertFailsWith<IllegalArgumentException> {shipped.performUpdate(arguments.toList())}
+        assertFailsWith<IllegalArgumentException> {create.performUpdate(arguments.toList())}
 
         arguments.removeLast()
         arguments.removeLast()
@@ -272,6 +276,8 @@ class TestShipmentUpdate {
         assertFailsWith<IllegalArgumentException> {canceled.performUpdate(arguments1.toList())}
 
         arguments1.add(":)")
+        assertFailsWith<IllegalArgumentException> {create.performUpdate(arguments1.toList())}
+
         // With 4 arguments
         assertFailsWith<IllegalArgumentException> {delayed.performUpdate(arguments1.toList())}
         assertFailsWith<IllegalArgumentException> {shipped.performUpdate(arguments1.toList())}

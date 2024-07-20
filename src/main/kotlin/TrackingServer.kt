@@ -45,16 +45,7 @@ object TrackingServer
                 post("/data")
                 {
                     val data = call.receiveText()
-//                    TrackingSimulator.addShipment(
-//                        Shipment(
-//                            data,
-//                            "created",
-//                            mutableListOf(),
-//                            mutableListOf(),
-//                            -1,
-//                            "unknown"
-//                        )
-//                    )
+
                     try {
                         val temp = data.split(",")
                         updates[temp[0]]?.performUpdate(temp)
@@ -74,8 +65,3 @@ object TrackingServer
         }.start(wait = false)
     }
 }
-
-
-
-
-

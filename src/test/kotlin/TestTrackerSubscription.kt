@@ -4,7 +4,7 @@ import kotlin.test.assertTrue
 
 class TestTrackerSubscription {
     // NOTE: Cannot run suspend function in kotlin tests
-    // NOTE: The TrackingSimulator is a static class, testing this can be difficult
+    // NOTE: The TrackingServer is a static class, testing this can be difficult
     // Just need to make sure that we are changing the shipment id that could or
     // could not exist in the simulation
 
